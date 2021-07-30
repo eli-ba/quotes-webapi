@@ -147,7 +147,7 @@ export class AppService {
   }
 
   signUp(register: Register): Promise<void> {
-    return this.httpClient.post<void>(`${environment.apiUrl}/register`, register)
+    return this.httpClient.post<void>(`${environment.apiUrl}/registrations`, register)
         .toPromise();
   }
 

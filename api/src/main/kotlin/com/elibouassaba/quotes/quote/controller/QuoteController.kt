@@ -22,7 +22,7 @@ import javax.validation.Valid
 
 @RestController
 @RequestMapping("api/quotes")
-class QuotesController(
+class QuoteController(
     private val userRepository: UserRepository,
     private val quoteRepository: QuoteRepository,
     private val voteCountRepository: VoteSnapshotRepository,

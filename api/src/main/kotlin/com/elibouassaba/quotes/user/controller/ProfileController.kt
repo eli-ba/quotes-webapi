@@ -16,4 +16,3 @@ class ProfileController(private val userRepository: UserRepository) {
         return ProfileDto(user!!)
     }
 }
-

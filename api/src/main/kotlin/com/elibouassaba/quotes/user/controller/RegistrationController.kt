@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("api/register")
-class RegisterController(
+@RequestMapping("api/registrations")
+class RegistrationController(
     private val userRepository: UserRepository,
     private val authorityRepository: AuthorityRepository
 ) {

@@ -1,4 +1,4 @@
-package com.eliba.quotes
+package com.elibouassaba.quotes
 
 import org.springframework.data.domain.PageRequest
 import org.springframework.http.HttpStatus
@@ -79,7 +79,7 @@ class QuotesController(
         @PathVariable("id") id: Long,
         @RequestBody body: @Valid EditQuoteDto?, principal: Principal
     ): ResponseEntity<*> {
-        val user = userRepository.findByUsername(principal.getName())
+        val user = userRepository.findByUsername(principal.name)
         val quote: Optional<Quote?> = quoteRepository.findById(id)
         return if (quote.isPresent) {
             if (quote.get().user!!.id == user!!.id) {

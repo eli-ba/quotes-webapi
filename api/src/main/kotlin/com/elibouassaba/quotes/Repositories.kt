@@ -1,4 +1,4 @@
-package com.eliba.quotes
+package com.elibouassaba.quotes
 
 import org.springframework.data.domain.Pageable
 import org.springframework.data.jpa.repository.Modifying

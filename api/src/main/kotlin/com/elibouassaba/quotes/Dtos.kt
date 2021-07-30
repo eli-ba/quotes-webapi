@@ -1,4 +1,4 @@
-package com.eliba.quotes
+package com.elibouassaba.quotes
 
 import javax.validation.constraints.NotNull
 

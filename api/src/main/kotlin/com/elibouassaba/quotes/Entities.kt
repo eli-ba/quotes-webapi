@@ -1,4 +1,4 @@
-package com.eliba.quotes
+package com.elibouassaba.quotes
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import org.hibernate.annotations.*

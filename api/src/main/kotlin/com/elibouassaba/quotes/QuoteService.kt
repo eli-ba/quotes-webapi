@@ -1,9 +1,8 @@
-package com.eliba.quotes
+package com.elibouassaba.quotes
 
 import org.springframework.stereotype.Service
 import java.math.BigInteger
 import java.sql.Timestamp
-import java.util.*
 import javax.persistence.EntityManager
 import javax.persistence.PersistenceContext
 

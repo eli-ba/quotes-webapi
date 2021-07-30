@@ -1,4 +1,4 @@
-package com.eliba.quotes
+package com.elibouassaba.quotes
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
@@ -16,7 +16,6 @@ import org.springframework.security.web.authentication.logout.HttpStatusReturnin
 import org.springframework.web.cors.CorsConfiguration
 import org.springframework.web.cors.CorsConfigurationSource
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource
-import java.lang.Exception
 import javax.sql.DataSource
 
 @Configuration

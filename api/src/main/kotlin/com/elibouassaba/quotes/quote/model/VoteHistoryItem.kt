@@ -1,4 +1,4 @@
-package com.elibouassaba.quotes
+package com.elibouassaba.quotes.quote.model
 
 import java.math.BigInteger
 import java.sql.Timestamp

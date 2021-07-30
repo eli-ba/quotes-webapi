@@ -1,46 +1,24 @@
-package com.elibouassaba.quotes
+package com.elibouassaba.quotes.quote.controller
 
+import com.elibouassaba.quotes.quote.dto.CreateQuoteDto
+import com.elibouassaba.quotes.quote.dto.EditQuoteDto
+import com.elibouassaba.quotes.quote.dto.QuoteDto
+import com.elibouassaba.quotes.quote.entity.Quote
+import com.elibouassaba.quotes.quote.entity.Vote
+import com.elibouassaba.quotes.quote.model.VoteHistoryItem
+import com.elibouassaba.quotes.quote.repository.QuoteRepository
+import com.elibouassaba.quotes.quote.repository.UserRepository
+import com.elibouassaba.quotes.quote.repository.VoteSnapshotRepository
+import com.elibouassaba.quotes.quote.service.QuoteService
+import com.elibouassaba.quotes.user.dto.VoteHistoryItemDto
 import org.springframework.data.domain.PageRequest
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.web.bind.annotation.*
 import java.security.Principal
 import java.util.*
 import java.util.stream.Collectors
 import javax.validation.Valid
-
-@RestController
-@RequestMapping("api/register")
-class RegisterController(
-    private val userRepository: UserRepository,
-    private val authorityRepository: AuthorityRepository
-) {
-    @PostMapping
-    fun register(@RequestBody body: RegisterDto) {
-        val user = User()
-        user.fullName = body.fullName
-        user.username = body.username
-        user.password = BCryptPasswordEncoder().encode(body.password)
-        user.enabled = true
-        userRepository.save(user)
-
-        val authority = Authority()
-        authority.user = user
-        authority.authority = "ROLE_ADMIN"
-        authorityRepository.save(authority)
-    }
-}
-
-@RestController
-@RequestMapping("api/profile")
-class ProfileController(private val userRepository: UserRepository) {
-    @GetMapping
-    operator fun get(principal: Principal): ProfileDto {
-        val user = userRepository.findByUsername(principal.name)
-        return ProfileDto(user!!)
-    }
-}
 
 @RestController
 @RequestMapping("api/quotes")
@@ -59,9 +37,9 @@ class QuotesController(
         quote.user = user
         quoteRepository.save(quote)
 
-        val voteCount = VoteSnapshot()
-        voteCount.quote = quote
-        voteCountRepository.save(voteCount)
+        val vote = Vote()
+        vote.quote = quote
+        voteCountRepository.save(vote)
 
         return QuoteDto(quote)
     }
@@ -132,15 +110,15 @@ class QuotesController(
     fun upvote(@PathVariable("id") id: Long): ResponseEntity<*> {
         quoteRepository.upvote(id)
         val quote: Optional<Quote?> = quoteRepository.findById(id)
-        val voteCount = VoteSnapshot(quote.get())
-        voteCountRepository.save(voteCount)
+        val vote = Vote(quote.get())
+        voteCountRepository.save(vote)
         return ResponseEntity<Any>(null, HttpStatus.OK)
     }
 
     @PostMapping("{id}/downvote")
     fun downvote(@PathVariable("id") id: Long): ResponseEntity<*> {
         quoteRepository.downvote(id)
-        voteCountRepository.save(VoteSnapshot(quoteRepository.findById(id).get()))
+        voteCountRepository.save(Vote(quoteRepository.findById(id).get()))
         return ResponseEntity<Any>(null, HttpStatus.OK)
     }
 

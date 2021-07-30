@@ -1,19 +1,12 @@
-package com.elibouassaba.quotes
+package com.elibouassaba.quotes.quote.repository
 
+import com.elibouassaba.quotes.quote.entity.Quote
 import org.springframework.data.domain.Pageable
 import org.springframework.data.jpa.repository.Modifying
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.PagingAndSortingRepository
 import org.springframework.data.repository.query.Param
 import javax.transaction.Transactional
-
-interface UserRepository : PagingAndSortingRepository<User?, Long?> {
-    fun findByUsername(username: String?): User?
-}
-
-interface AuthorityRepository : PagingAndSortingRepository<Authority?, Long?>
-
-interface VoteSnapshotRepository : PagingAndSortingRepository<VoteSnapshot?, Long?>
 
 interface QuoteRepository : PagingAndSortingRepository<Quote?, Long?> {
     fun findTopByOrderByCreatedAtDesc(): Quote?

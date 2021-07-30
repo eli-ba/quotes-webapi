@@ -1,5 +1,6 @@
-package com.elibouassaba.quotes
+package com.elibouassaba.quotes.quote.service
 
+import com.elibouassaba.quotes.quote.model.VoteHistoryItem
 import org.springframework.stereotype.Service
 import java.math.BigInteger
 import java.sql.Timestamp

@@ -1,21 +1,6 @@
-package com.elibouassaba.quotes
+package com.elibouassaba.quotes.quote.dto
 
-import javax.validation.constraints.NotNull
-
-
-data class CreateQuoteDto(
-    @NotNull
-    var content: String? = null
-)
-
-data class EditQuoteDto(
-    var content: @NotNull String? = null
-)
-
-class ProfileDto(user: User) {
-    var fullName: String? = user.fullName
-    var username: String? = user.username
-}
+import com.elibouassaba.quotes.quote.entity.Quote
 
 class QuoteDto(quote: Quote) {
     var id: String = java.lang.Long.toString(quote.id)
@@ -53,17 +38,4 @@ class QuoteDto(quote: Quote) {
         result += votes.toString()
         return result
     }
-}
-
-data class RegisterDto(
-    var fullName: String? = null,
-    var username: String? = null,
-    var password: String? = null,
-)
-
-class VoteHistoryItemDto(vote: VoteHistoryItem) {
-    var upvotes: Long = vote.upvotes!!.toLong()
-    var downvotes: Long = vote.downvotes!!.toLong()
-    var delta: Long = vote.delta!!.toLong()
-    var createdAt: Long = vote.createdAt!!.time
 }

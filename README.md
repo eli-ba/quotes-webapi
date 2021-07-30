@@ -1,5 +1,5 @@
 # Quotes
-Quotes is a quote voting sample application based on Kotlin, Spring, Angular and Chart.js
+Quotes is a quote voting sample application based on Kotlin, Spring, Angular and Chart.js.
 ![](./docs/screenshot.png)
 ## Features
 - Upvote/Downvote a quote
